@@ -29,12 +29,15 @@ def fetch_food():
         conn.close()
         return movies
     return []
-        
+
+def fetch_movie():
+    
+    
 # Streamlit App
 st.title("♥ hiz House ♥")
 
 # Menu menu
-menu = ["희주네 메뉴판 >_<", "음식 찾기"]
+menu = ["희주네 메뉴판 >_<", "영화 찾기"]
 
 choice = st.sidebar.selectbox("Menu",  menu)
 print(choice)
@@ -50,10 +53,16 @@ if choice == "희주네 메뉴판 >_<":
     else: 
         st.write("no food in here")
 elif choice == "음식 찾기":
-    st.subheader("음식이 없당 ㅠ.ㅠ")
-    foods = fetch_food()
-    if foods:
-        for food in foods:
-            st.write(food)
-    else: 
-        st.write("no food in here")
+    st.subheader("영화가 없어요 ㅠ.ㅠ")
+    title = st.text.input("Enter movie title")
+    if st.button("영화 찾기"):
+            movies = fetch_movie("라라랜드")
+    if movies:
+        for movie in movies:
+                    st.write(movie)
+    else:
+                st.write("영화가 없어요ㅠ.ㅠ")
+    
+    return []
+        
+        
